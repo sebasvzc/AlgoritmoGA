@@ -278,7 +278,7 @@ class Generacion {
         generacionCombinada.inicializarValoresObjetivo(numeroCultivos, meses, cultivacion);
 
         sort(generacionCombinada.poblacion.begin(), generacionCombinada.poblacion.end(), [](const Cromosoma& a, const Cromosoma& b) {
-            return a.valorObjetivo < b.valorObjetivo;
+            return a.valorObjetivo > b.valorObjetivo;
         });
 
         // Seleccionar los mejores individuos para la siguiente generación
@@ -412,8 +412,7 @@ class Generacion {
             cosechaTotal += cosechaMensual;
         }
 
-        // Devolver el negativo de la cosecha total porque buscamos minimizar la función objetivo
-        return -cosechaTotal;
+        return cosechaTotal;
     }
 
     void actualizarValorObjetivo(size_t indice, int numeroCultivos, int meses, Cultivacion& cultivacion) {
@@ -438,7 +437,7 @@ class Generacion {
     Cromosoma encontrarMejorCromosoma() const {
         auto mejorCromosoma = poblacion[0];
         for (const auto& cromosoma : poblacion) {
-            if (cromosoma.valorObjetivo < mejorCromosoma.valorObjetivo) {
+            if (cromosoma.valorObjetivo > mejorCromosoma.valorObjetivo) {
                 mejorCromosoma = cromosoma;
             }
         }

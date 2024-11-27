@@ -40,7 +40,7 @@ int main() {
         poblacion.obtenerNuevaGeneracion(tamanoPoblacion, numeroCultivos, meses, cultivacion);
         poblacion.inicializarValoresObjetivo(numeroCultivos, meses, cultivacion);
 
-        if (poblacion.encontrarMejorCromosoma().valorObjetivo < mejorAptitud) {
+        if (poblacion.encontrarMejorCromosoma().valorObjetivo > mejorAptitud) {
             mejorCromosoma = poblacion.encontrarMejorCromosoma();
             mejorAptitud = mejorCromosoma.valorObjetivo;
         }
